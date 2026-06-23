@@ -1,3 +1,6 @@
 name = "buildlogichttp"
 main = "Worker.js"
 compatibility_date = "2026-06-23"
+[observability.logs]
+enabled = false
+invocation_logs = true
