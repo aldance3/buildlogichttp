@@ -1,8 +1,12 @@
 name = "buildlogichttp"
 main = "Worker.js"
 compatibility_date = "2026-06-23"
+
+[vars]
+TRELLO_BOARD_ID = "6a38cb45aab8cc7c3878f9fa"
+
 [observability]
-enabled = false
+enabled = true
 head_sampling_rate = 1
 
 [observability.logs]
