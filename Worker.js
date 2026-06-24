@@ -33,7 +33,7 @@ export default {
       
       // 1. IF USING STANDARD CONFIG HEADER
       if (configHeader.trim()) {
-        const parts = configHeader.split(';').map(p => p.trim()).filter(Boolean);
+        const parts = configHeader.split(/\s+/).map(p => p.trim()).filter(Boolean);
         const credsChunk = parts[0];
         
         if (credsChunk && credsChunk.includes('.')) {
@@ -46,7 +46,7 @@ export default {
           if (pair.includes('=')) {
             const idx = pair.indexOf('=');
             const keyName = pair.substring(0, idx).trim().toLowerCase();
-            const valValue = pair.substring(idx + 1).trim();
+            const valValue = pair.substring(idx + 1).trim().replace(/\+/g, ' ');
             if (keyName === 'customget') customGet = valValue;
             if (keyName === 'custompost') customPost = valValue;
             if (keyName === 'server') crossServerCard = valValue;
@@ -56,7 +56,7 @@ export default {
       
       // 2. IF USING STANDALONE WRITECONFIG HEADER (Extracts credentials from the front)
       else if (writeHeader.trim()) {
-        const parts = writeHeader.split(';').map(p => p.trim()).filter(Boolean);
+        const parts = writeHeader.split(/\s+/).map(p => p.trim()).filter(Boolean);
         const credsChunk = parts[0];
         
         if (credsChunk && credsChunk.includes('.')) {
@@ -69,7 +69,7 @@ export default {
           if (pair.includes('=')) {
             const idx = pair.indexOf('=');
             const keyName = pair.substring(0, idx).trim().toLowerCase();
-            const valValue = pair.substring(idx + 1).trim();
+            const valValue = pair.substring(idx + 1).trim().replace(/\+/g, ' ');
             if (keyName === 'card') writeCard = valValue;
             if (keyName === 'custompost') writeCustomPost = valValue;
             if (keyName === 'delete') writeDelete = valValue.toLowerCase() === 'true';
