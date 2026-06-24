@@ -1,4 +1,4 @@
-name = "buildlogichttp"
+name = "blhttp"
 main = "Worker.js"
 compatibility_date = "2026-06-23"
 
